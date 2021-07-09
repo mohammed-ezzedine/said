@@ -1,4 +1,14 @@
 {
+    "introduction": "What is CRC?",
+    "key11": "Colorectal cancer (CRC) affects the colon or rectum of the digestive system.",
+    "key12": "The colon is the large intestine, whereas the rectum is the pathway that join the colon and anus.",
+    "key13": "In Lebanon, the incidence of colorectal cancer in 2015 was 262.4 240.1 in males and females respectively (MOPH, n.d), and in 2016 the incidence was high at age 40-44 and 45-49 years in both males and females (Lakkis,2021).",
+    "key14": "Colorectal cancer strikes 1 in 20 both men and women are at equal risks.",
+    "key15": "CRC is more commonly diagnosed at the age of 45 and above.",
+    "preventionImportance": "Importance of Prevention",
+    "riskFactors": "Risk Factors of CRC",
     "saidNgo": "SAID NGO",
-    "settings": "Settings"
+    "settings": "Settings",
+    "screeningImportance": "Importance of Screening",
+    "symptoms": "Symptoms of CRC"
 }
