@@ -13,8 +13,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 20, right: 20, top: 50),
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
+      child: ListView (
         children: [
           Padding(
             padding: EdgeInsets.only(bottom: 20),

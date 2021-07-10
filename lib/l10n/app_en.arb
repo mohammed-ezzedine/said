@@ -8,7 +8,16 @@
     "preventionImportance": "Importance of Prevention",
     "riskFactors": "Risk Factors of CRC",
     "saidNgo": "SAID NGO",
-    "settings": "Settings",
     "screeningImportance": "Importance of Screening",
+    "settings": "Settings",
+    "stages": "Stages of CRC",
+    "stagesIntro": "Most colorectal cancer cases start with a non-cancerous polyp which is unusual growth of tissues in the lining of the colon and rectum. Its takes about 10-15 years for the cancer to be developed in the colon or rectum.",
+    "stagesIntro2": "Stages of developing colorectal cancer :",
+    "stage": "Stage",
+    "stage0": "is called the Carcinoma in Situ is when the cancer is in the inner lining of the colon or rectum.",
+    "stage1": "is called the Dukes A colon cancer when the cancer starts to spread to  the inner lining of the colon.",
+    "stage2": "is called the Dukes B colon cancer when the cancer starts spreading to the wall of the colon and  near the lymph nodes,which are organs of the immune system that have a role in fighting the diseases and infection.",
+    "stage3": "is called the Dukes C colon cancer is when the cancer reaches the lymph nodes.",
+    "stage4": "is called the Duke D colon cancer is when the cancer has spread to otherorgans of the body.",
     "symptoms": "Symptoms of CRC"
 }

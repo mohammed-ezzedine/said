@@ -60,11 +60,6 @@ class SaidCard extends StatelessWidget {
                       size: 40,
                     ),
                   )
-                // Icon(
-                //   icon,
-                //   size: 40,
-                //   color: textColor,
-                // )
               ],
             ),
           ),
