@@ -19,5 +19,12 @@
     "stage2": "is called the Dukes B colon cancer when the cancer starts spreading to the wall of the colon and  near the lymph nodes,which are organs of the immune system that have a role in fighting the diseases and infection.",
     "stage3": "is called the Dukes C colon cancer is when the cancer reaches the lymph nodes.",
     "stage4": "is called the Duke D colon cancer is when the cancer has spread to otherorgans of the body.",
-    "symptoms": "Symptoms of CRC"
+    "symptoms": "Symptoms of CRC",
+    "symptomsIntro": "Symptoms of colorectal cancer:",
+    "symptom1": "Most of the time, no symptom",
+    "symptom2": "Stomach pain and change in the bowel habits",
+    "symptom3": "Weakness and fatigue",
+    "symptom4": "Weight loss",
+    "symptom5": "Blood in stool",
+    "symptom6": "Diarrhea or constipation"
 }

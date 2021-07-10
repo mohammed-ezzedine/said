@@ -26,8 +26,40 @@ class Stages extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.all(10),
-            child: Image(
-              image: AssetImage('assets/img/stages.png'),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Text(AppLocalizations.of(context)!.stages,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFFF59E0B),
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.stagesIntro,
+                  style: TextStyle(
+                    fontSize: 17
+                  ),
+                  textAlign: TextAlign.justify
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Image(
+                    image: AssetImage('assets/img/stages.png'),
+                  ),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.stagesIntro2,
+                  style: TextStyle(
+                    fontSize: 17
+                  ),
+                  textAlign: TextAlign.justify
+                ),
+              ],
             ),
           ),
         ),

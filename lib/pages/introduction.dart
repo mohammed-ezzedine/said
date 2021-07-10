@@ -26,7 +26,19 @@ class IntroductionWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsetsDirectional.all(20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                    child: Text(AppLocalizations.of(context)!.introduction,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFFF59E0B),
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+
                   Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/pages/symptoms.dart';
 
 import './introduction.dart';
 
@@ -41,7 +42,7 @@ class Home extends StatelessWidget {
                 Expanded(
                   child: SaidCard(
                     title: AppLocalizations.of(context)!.symptoms,
-                    linkTo: IntroductionWidget(),
+                    linkTo: Symptoms(),
                     padRight: gapPadding / 2,
                     icon: 'symptoms.png',
                   )
