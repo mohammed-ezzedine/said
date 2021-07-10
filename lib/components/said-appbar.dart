@@ -5,7 +5,14 @@ void changeLanguage() {
   // Localizations.
 }
 
-saidAppbar({ required BuildContext context, bool withArrowBack = false}) => AppBar(
+const List<Widget> emptyList = [];
+
+saidAppbar({ 
+  required BuildContext context, 
+  bool withArrowBack = false,
+  bool hasTabs = false,
+  List<Widget> tabsIcons = emptyList
+}) => AppBar(
   automaticallyImplyLeading: true,
   title: Image(
     image: AssetImage(
@@ -13,6 +20,13 @@ saidAppbar({ required BuildContext context, bool withArrowBack = false}) => AppB
     ),
     height: 40,
   ),
+  bottom: (hasTabs)? TabBar(
+    tabs: [
+      for (Widget icon in tabsIcons)
+        Tab(icon: icon)
+    ],
+    indicatorSize: TabBarIndicatorSize.label,
+  ): null,
   leading: (withArrowBack)? IconButton(
     onPressed: () {
       Navigator.pop(context);

@@ -1,11 +1,14 @@
 {
+    "general": "عام",
     "introduction": "ما هو سرطان القولون؟",
     "preventionImportance": "أهمية محاربة سرطان القولون",
     "riskFactors": "عوامل خطر سرطان القولون",
+    "riskFactorsTitle": "العوامل",
     "saidNgo": "جمعية سعيد",
     "screeningImportance": "أهمية الفحص",
     "settings": "الإعدادات",
     "stage": "المرحلة",
     "stages": "مراحل تطور سرطان القولون",
-    "symptoms": "عوارض سرطان القولون"
+    "symptoms": "عوارض سرطان القولون",
+    "symptomsTitle": "العوارض"
 }

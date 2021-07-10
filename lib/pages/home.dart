@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/pages/risks.dart';
 import 'package:said/pages/symptoms.dart';
 
 import './introduction.dart';
@@ -30,29 +31,17 @@ class Home extends StatelessWidget {
                   child: SaidCard(
                     title: AppLocalizations.of(context)!.introduction,
                     linkTo: IntroductionWidget(),
-                  )
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: gapPadding),
-            child:  Row(
-              children: [
-                Expanded(
-                  child: SaidCard(
-                    title: AppLocalizations.of(context)!.symptoms,
-                    linkTo: Symptoms(),
-                    padRight: gapPadding / 2,
-                    icon: 'symptoms.png',
-                  )
-                ),
-                Expanded(
-                  child: SaidCard(
-                    title: AppLocalizations.of(context)!.riskFactors,
-                    linkTo: IntroductionWidget(),
-                    padLeft: gapPadding / 2,
-                    icon: 'caution.png',
+                    hasTabs: true,
+                    tabsIcons: [
+                      Text(AppLocalizations.of(context)!.general),
+                      Text(AppLocalizations.of(context)!.symptomsTitle),
+                      Text(AppLocalizations.of(context)!.riskFactorsTitle),
+                    ],
+                    tabsBodies: [
+                      IntroductionWidget(),
+                      Symptoms(),
+                      RiskFactors(),
+                    ],
                   )
                 )
               ],

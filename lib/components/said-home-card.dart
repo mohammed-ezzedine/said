@@ -10,7 +10,10 @@ class SaidCard extends StatelessWidget {
     Color this.textColor = Colors.blue,
     Color this.backgroundColor = Colors.white,
     double this.padLeft = 0,
-    double this.padRight = 0
+    double this.padRight = 0,
+    bool this.hasTabs = false,
+    List<Widget> this.tabsIcons = emptyList,
+    List<Widget> this.tabsBodies = emptyList
   }) : super(key: key);
 
   final String title;
@@ -21,6 +24,11 @@ class SaidCard extends StatelessWidget {
   final double padLeft;
   final String icon;
 
+  final bool hasTabs;
+  final List<Widget> tabsIcons;
+  final List<Widget> tabsBodies;
+
+  static const List<Widget> emptyList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +45,9 @@ class SaidCard extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
               body: linkTo,
               hasParent: true,  
+              hasTabs: hasTabs,
+              tabsIcons: tabsIcons,
+              tabsBodies: tabsBodies,
             )));
           },
           child: Padding(
