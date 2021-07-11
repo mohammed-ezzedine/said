@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/pages/prevention.dart';
 import 'package:said/pages/risks.dart';
+import 'package:said/pages/screening.dart';
 import 'package:said/pages/symptoms.dart';
 
 import './introduction.dart';
@@ -52,7 +54,7 @@ class Home extends StatelessWidget {
               Expanded(
                 child: SaidCard(
                   title: AppLocalizations.of(context)!.screeningImportance,
-                  linkTo: IntroductionWidget(),
+                  linkTo: Screening(),
                   padRight: gapPadding / 2,
                   backgroundColor: Color(0xFFF59E0B),
                   textColor: Colors.white70,
@@ -61,8 +63,8 @@ class Home extends StatelessWidget {
               ),
               Expanded(
                 child: SaidCard(
-                  title: AppLocalizations.of(context)!.preventionImportance,
-                  linkTo: IntroductionWidget(),
+                  title: AppLocalizations.of(context)!.tertiaryPrevention,
+                  linkTo: Prevention(),
                   padLeft: gapPadding / 2,
                   backgroundColor: Color(0xFFF59E0B),
                   textColor: Colors.white70,
