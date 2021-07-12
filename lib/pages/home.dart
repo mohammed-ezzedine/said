@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 20),
             child: Image(
-              image: AssetImage('assets/img/logo.jpg'),
+              image: AssetImage('assets/img/logo-dual.png'),
             ),
           ),
           Padding(

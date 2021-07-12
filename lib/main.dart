@@ -8,13 +8,29 @@ import 'styles/theme.dart';
 
 void main() => runApp(SAIDApp());
 
-class SAIDApp extends StatelessWidget {
+class SAIDApp extends StatefulWidget {
   const SAIDApp({ Key? key}) : super(key: key);
+
+  @override
+  _SAIDAppState createState() => _SAIDAppState();
+
+  static _SAIDAppState of(BuildContext context) => context.findAncestorStateOfType<_SAIDAppState>()!;
+}
+
+class _SAIDAppState extends State<SAIDApp> {
+  Locale _locale = Locale.fromSubtags(languageCode: 'en');
+
+  void setLocale(Locale value) {
+    setState(() {
+      _locale = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Hello",
+      title: "SAID NGO",
+      locale: _locale,
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

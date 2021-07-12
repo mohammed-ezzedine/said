@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './said-appbar.dart';
 import './said-drawer.dart';
 
-class SaidScaffold extends StatelessWidget {
+class SaidScaffold extends StatefulWidget {
   const SaidScaffold({ 
     Key? key, 
     required Widget this.body, 
@@ -21,16 +21,21 @@ class SaidScaffold extends StatelessWidget {
 
   static const List<Widget> emptyList = [];
 
+  @override
+  _SaidScaffoldState createState() => _SaidScaffoldState();
+}
+
+class _SaidScaffoldState extends State<SaidScaffold> {
   Widget getTabbedScaffold(BuildContext context) {
     return Scaffold(
       appBar: saidAppbar(
         context: context,
-        withArrowBack: hasParent,
+        withArrowBack: widget.hasParent,
         hasTabs: true,
-        tabsIcons: tabsIcons
+        tabsIcons: widget.tabsIcons
       ),
       body: TabBarView(
-        children: tabsBodies,
+        children: widget.tabsBodies,
       ),
       endDrawer: SaidDrawer(),
     );
@@ -40,17 +45,17 @@ class SaidScaffold extends StatelessWidget {
     return Scaffold(
       appBar: saidAppbar(
         context: context,
-        withArrowBack: hasParent
+        withArrowBack: widget.hasParent
       ),
-      body: body,
+      body: widget.body,
       endDrawer: SaidDrawer(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return (hasTabs)?  DefaultTabController(
-      length: tabsIcons.length,
+    return (widget.hasTabs)?  DefaultTabController(
+      length: widget.tabsIcons.length,
       child: getTabbedScaffold(context)
     ) : getUntabbedScaffold(context);
   }

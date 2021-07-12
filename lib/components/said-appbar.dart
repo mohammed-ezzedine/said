@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-void changeLanguage() {
-  print("translating");
-  // Localizations.
-}
-
 const List<Widget> emptyList = [];
 
 saidAppbar({ 
