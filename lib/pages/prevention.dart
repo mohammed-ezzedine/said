@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Prevention extends StatelessWidget {
+class Prevention extends StatefulWidget {
   const Prevention({ Key? key }) : super(key: key);
 
+  @override
+  _PreventionState createState() => _PreventionState();
+}
+
+class _PreventionState extends State<Prevention> {
   @override
   Widget build(BuildContext context) {
     return Container(

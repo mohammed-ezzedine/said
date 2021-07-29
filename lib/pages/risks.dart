@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class RiskFactors extends StatelessWidget {
+class RiskFactors extends StatefulWidget {
   const RiskFactors({ Key? key }) : super(key: key);
 
+  @override
+  _RiskFactorsState createState() => _RiskFactorsState();
+}
+
+class _RiskFactorsState extends State<RiskFactors> {
   @override
   Widget build(BuildContext context) {
     var highRiskMessages = [

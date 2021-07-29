@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Symptoms extends StatelessWidget {
+class Symptoms extends StatefulWidget {
   const Symptoms({ Key? key }) : super(key: key);
 
+  @override
+  _SymptomsState createState() => _SymptomsState();
+}
+
+class _SymptomsState extends State<Symptoms> {
   Widget getCard(String text) {
     return Expanded(
       child: Card(

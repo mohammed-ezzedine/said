@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:said/components/said-scaffold.dart';
 
-class SaidCard extends StatelessWidget {
+class SaidCard extends StatefulWidget {
   const SaidCard ({ 
     Key? key,
     required String this.title,
@@ -31,23 +31,28 @@ class SaidCard extends StatelessWidget {
   static const List<Widget> emptyList = [];
 
   @override
+  _SaidCardState createState() => _SaidCardState();
+}
+
+class _SaidCardState extends State<SaidCard> {
+  @override
   Widget build(BuildContext context) {
-    bool hasIcon = icon != '';
+    bool hasIcon = widget.icon != '';
     return Padding(
-      padding: EdgeInsets.only(right: padRight, left: padLeft),
+      padding: EdgeInsets.only(right: widget.padRight, left: widget.padLeft),
       child: Card(
-        color: backgroundColor,
+        color: widget.backgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20)
         ),
         child: TextButton(
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
-              body: linkTo,
+              body: widget.linkTo,
               hasParent: true,  
-              hasTabs: hasTabs,
-              tabsIcons: tabsIcons,
-              tabsBodies: tabsBodies,
+              hasTabs: widget.hasTabs,
+              tabsIcons: widget.tabsIcons,
+              tabsBodies: widget.tabsBodies,
             )));
           },
           child: Padding(
@@ -55,10 +60,10 @@ class SaidCard extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  title,
+                  widget.title,
                   style: TextStyle(
                     fontSize: 18,
-                    color: textColor
+                    color: widget.textColor
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -66,8 +71,8 @@ class SaidCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: ImageIcon(
-                      AssetImage('assets/icons/' + icon),
-                      color: textColor,
+                      AssetImage('assets/icons/' + widget.icon),
+                      color: widget.textColor,
                       size: 40,
                     ),
                   )

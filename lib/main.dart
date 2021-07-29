@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:said/pages/login.dart';
+import 'package:said/pages/register.dart';
 
 import 'pages/home.dart';
 import 'components/said-scaffold.dart';
@@ -41,7 +43,8 @@ class _SAIDAppState extends State<SAIDApp> {
         const Locale('ar', ''),
         const Locale('en', ''),
       ],
-      home: SaidScaffold(body: Home()),
+      home: SaidScaffold(body: Login()),
+      // home: SaidScaffold(body: Home()),
       theme: appTheme(),
     );
   }

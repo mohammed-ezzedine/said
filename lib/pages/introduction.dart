@@ -3,9 +3,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-scaffold.dart';
 import 'package:said/pages/stages.dart';
 
-class IntroductionWidget extends StatelessWidget {
+class IntroductionWidget extends StatefulWidget {
   const IntroductionWidget({ Key? key }) : super(key: key);
 
+  @override
+  _IntroductionWidgetState createState() => _IntroductionWidgetState();
+}
+
+class _IntroductionWidgetState extends State<IntroductionWidget> {
   @override
   Widget build(BuildContext context) {
 

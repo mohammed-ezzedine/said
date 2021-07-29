@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:timelines/timelines.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Stages extends StatelessWidget {
+class Stages extends StatefulWidget {
   const Stages({ Key? key }) : super(key: key);
 
+  @override
+  _StagesState createState() => _StagesState();
+}
+
+class _StagesState extends State<Stages> {
   @override
   Widget build(BuildContext context) {
     

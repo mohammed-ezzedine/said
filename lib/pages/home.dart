@@ -8,11 +8,17 @@ import 'package:said/pages/symptoms.dart';
 
 import './introduction.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
 
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final double cardPadding = 20;
+
   final double gapPadding = 10;
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(

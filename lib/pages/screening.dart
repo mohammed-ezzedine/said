@@ -3,8 +3,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-scaffold.dart';
 import 'package:said/pages/screening-guidelines.dart';
 
-class Screening extends StatelessWidget {
+class Screening extends StatefulWidget {
 
+  @override
+  _ScreeningState createState() => _ScreeningState();
+}
+
+class _ScreeningState extends State<Screening> {
   Widget getCard(String text) {
     return Expanded(
       child: Card(

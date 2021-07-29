@@ -28,8 +28,7 @@ class SaidScaffold extends StatefulWidget {
 class _SaidScaffoldState extends State<SaidScaffold> {
   Widget getTabbedScaffold(BuildContext context) {
     return Scaffold(
-      appBar: saidAppbar(
-        context: context,
+      appBar: SaidAppbar(
         withArrowBack: widget.hasParent,
         hasTabs: true,
         tabsIcons: widget.tabsIcons
@@ -43,8 +42,7 @@ class _SaidScaffoldState extends State<SaidScaffold> {
 
   Widget getUntabbedScaffold(BuildContext context) {
     return Scaffold(
-      appBar: saidAppbar(
-        context: context,
+      appBar: SaidAppbar(
         withArrowBack: widget.hasParent
       ),
       body: widget.body,
