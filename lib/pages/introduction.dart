@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:said/components/said-button.dart';
 import 'package:said/components/said-scaffold.dart';
 import 'package:said/pages/stages.dart';
 
@@ -70,33 +71,7 @@ class _IntroductionWidgetState extends State<IntroductionWidget> {
               ),
             )
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: Expanded(
-              child: Card(
-                elevation: 2,
-                color: Color(0xFFF59E0B),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: TextButton(
-                  onPressed: () { 
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
-                      body: Stages(),
-                      hasParent: true,  
-                    )));
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.stages,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18
-                    ),
-                  ),
-                ),
-              )
-            ),
-          ),
+          SaidButton(child: Stages(), text: AppLocalizations.of(context)!.stages)
         ],
       ),
     );

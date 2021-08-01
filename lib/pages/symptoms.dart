@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:said/components/said-text-card.dart';
 
 class Symptoms extends StatefulWidget {
   const Symptoms({ Key? key }) : super(key: key);
@@ -9,22 +10,6 @@ class Symptoms extends StatefulWidget {
 }
 
 class _SymptomsState extends State<Symptoms> {
-  Widget getCard(String text) {
-    return Expanded(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Text(
-            text,
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-              fontSize: 17,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +43,12 @@ class _SymptomsState extends State<Symptoms> {
             )
             
           ),
-          getCard(AppLocalizations.of(context)!.symptom1),
-          getCard(AppLocalizations.of(context)!.symptom2),
-          getCard(AppLocalizations.of(context)!.symptom3),
-          getCard(AppLocalizations.of(context)!.symptom4),
-          getCard(AppLocalizations.of(context)!.symptom5),
-          getCard(AppLocalizations.of(context)!.symptom6),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom1),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom2),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom3),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom4),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom5),
+          SaidTextCard(text: AppLocalizations.of(context)!.symptom6),
         ],
       ),
     );

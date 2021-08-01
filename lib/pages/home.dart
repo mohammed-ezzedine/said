@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/pages/community.dart';
 import 'package:said/pages/prevention.dart';
 import 'package:said/pages/risks.dart';
 import 'package:said/pages/screening.dart';
@@ -69,7 +70,7 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: SaidCard(
-                  title: AppLocalizations.of(context)!.tertiaryPrevention,
+                  title: AppLocalizations.of(context)!.prevention + "\n",
                   linkTo: Prevention(),
                   padLeft: gapPadding / 2,
                   backgroundColor: Color(0xFFF59E0B),
@@ -78,6 +79,31 @@ class _HomeState extends State<Home> {
                 )
               )
             ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: gapPadding),
+            child:  Row(
+              children: [
+                Expanded(
+                  child: SaidCard(
+                    title: AppLocalizations.of(context)!.communityRole,
+                    linkTo: Community(),
+                    padRight: gapPadding / 2,
+                    icon: 'community.png',
+                  )
+                ),
+                // Expanded(
+                //   child: SaidCard(
+                //     title: AppLocalizations.of(context)!.prevention,
+                //     linkTo: Prevention(),
+                //     padLeft: gapPadding / 2,
+                //     backgroundColor: Color(0xFFF59E0B),
+                //     textColor: Colors.white70,
+                //     icon: 'first-aid-kit.png',
+                //   )
+                // )
+              ],
+            ),
           )
         ],
       )
