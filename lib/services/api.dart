@@ -17,5 +17,43 @@ Future<List<Article>> fetchArticles() async {
   }
 }
 
+Future postFeedback(String body) async {
+  var response = await http.post(
+    _buildUrl(path: '/app-feedbacks'),
+    headers: {
+      'Content-Type':'application/json',
+      'Accept': 'application/json'
+    },
+    body: jsonEncode({
+      "feedback": body,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    return;
+  } else {
+    throw Exception('Failed to post feedback');
+  }
+}
+
+Future postStory(String body) async {
+  var response = await http.post(
+    _buildUrl(path: '/user-stories'),
+    headers: {
+      'Content-Type':'application/json',
+      'Accept': 'application/json'
+    },
+    body: jsonEncode({
+      "story": body,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    return;
+  } else {
+    throw Exception('Failed to post feedback');
+  }
+}
+
 _buildUrl({required String path, dynamic params}) =>
   Uri.http(API_URL, path);
