@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/pages/login.dart';
 import 'package:said/pages/register.dart';
+import 'package:said/services/storage.dart';
 
 import 'pages/home.dart';
 import 'components/said-scaffold.dart';
@@ -21,6 +22,21 @@ class SAIDApp extends StatefulWidget {
 
 class _SAIDAppState extends State<SAIDApp> {
   Locale _locale = Locale.fromSubtags(languageCode: 'en');
+
+  bool isSignedIn = false;
+
+  @override
+  void initState() {
+    readToken()
+    .then((value) => {
+      if(value != null) {
+        setState(() {
+          isSignedIn = true;
+        })
+      }
+    });
+    super.initState();
+  }
 
   void setLocale(Locale value) {
     setState(() {
@@ -43,7 +59,7 @@ class _SAIDAppState extends State<SAIDApp> {
         const Locale('ar', ''),
         const Locale('en', ''),
       ],
-      home: SaidScaffold(body: Login()),
+      home: SaidScaffold(body: (isSignedIn)? Home(): Login()),
       // home: SaidScaffold(body: Home()),
       theme: appTheme(),
     );

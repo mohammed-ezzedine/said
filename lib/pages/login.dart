@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-scaffold.dart';
 import 'package:said/pages/home.dart';
 import 'package:said/pages/register.dart';
+import 'package:said/services/api.dart';
 
 class Login extends StatefulWidget {
   const Login({ Key? key }) : super(key: key);
@@ -14,22 +15,33 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
-  // TODO: add phone number as a key
-  TextEditingController _emailController = TextEditingController();
-
+  TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  RegExp emailRegexValidator = RegExp(
-    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
+  RegExp phoneRegexValidator = RegExp(
+    r"^[0-9]{2}/?[0-9]{6}$",
     caseSensitive: false,
     multiLine: false
   );
 
+  bool failure = false;
+
   handleLogin() {
-    // TODO
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
-      body: Home(),
-    )));
+
+    login(_phoneController.text, _passwordController.text)
+      .then((value) => {
+        if (value) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
+            body: Home(),
+          )))
+        } else {
+          setState(() {
+            _phoneController.clear();
+            _passwordController.clear();
+            failure = true;
+          })
+        }
+      });    
   }
 
   @override
@@ -54,6 +66,19 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                if (failure)
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      AppLocalizations.of(context)!.invalidLogin,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+
                 Form(
                   key: _formKey,
                   child: Column(
@@ -63,19 +88,18 @@ class _LoginState extends State<Login> {
                         validator: (value) {
                           if (value == null || value.isEmpty)
                             return AppLocalizations.of(context)!.fieldRequired;
-                          
-                          
-                          if (!emailRegexValidator.hasMatch(value)) {
+
+                          if (!phoneRegexValidator.hasMatch(value)) {
                             return AppLocalizations.of(context)!.emailInvalid;
                           }
 
                           return null;
                         },
-                        keyboardType: TextInputType.emailAddress,
-                        controller: _emailController,
+                        keyboardType: TextInputType.phone,
+                        controller: _phoneController,
                         decoration: InputDecoration(
-                          hintText: "abc@example.com",
-                          labelText: AppLocalizations.of(context)!.email
+                          hintText: "01 230 456",
+                          labelText: AppLocalizations.of(context)!.phone,
                         ),
                       ),
                       TextFormField(

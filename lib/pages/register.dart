@@ -1,7 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-scaffold.dart';
+import 'package:said/models/registrationRequest.dart';
 import 'package:said/pages/home.dart';
+import 'package:said/services/api.dart';
+import 'package:said/services/encoder.dart';
+import 'package:said/services/storage.dart';
 
 class Register extends StatefulWidget {
   const Register({ Key? key }) : super(key: key);
@@ -19,31 +25,29 @@ class _RegisterState extends State<Register> {
   final _formKey2 = GlobalKey<FormState>();
   final _formKey3 = GlobalKey<FormState>();
 
-  // TODO: change email to optional
-  // TODO: add name
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _question1RelationController = TextEditingController();
-  TextEditingController _question2RelationController = TextEditingController();
+  TextEditingController _question2YearController = TextEditingController();
   TextEditingController _question4PurposeController = TextEditingController();
   String ageGroup = '';
+  int ageGroupNumber = 0;
   String gender = '';
+  bool isMale = false;
   String governorate = '';
+  int governorateNumber = 0;
   String question1 = '';
+  bool familyHistory = false;
   String question2 = '';
+  bool previousHistory = false;
   String question4 = '';
+  String purpose = '';
 
   bool inflammatoryDiseaseCheckbox = false;
   bool familialPolyposisCheckbox = false;
   bool crohnDiseaseCheckbox = false;
   bool lynchDiseaseCheckbox = false;
-
-  RegExp emailRegexValidator = RegExp(
-    r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$",
-    caseSensitive: false,
-    multiLine: false
-  );
 
   RegExp phoneRegexValidator = RegExp(
     r"^[0-9]{2}/?[0-9]{6}$",
@@ -52,10 +56,34 @@ class _RegisterState extends State<Register> {
   );
 
   handleRegistry() {
-    // TODO
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
-      body: Home(),
-    )));
+
+    var request = RegistrationRequest(
+      Name: _nameController.text,
+      Phone: _phoneController.text,
+      Password: _passwordController.text,
+      AgeGroup: ageGroupNumber,
+      isMale: isMale,
+      Governorate: governorateNumber,
+      familyHistory: familyHistory,
+      familyHistoryRelation: _question1RelationController.text,
+      previousHistory: previousHistory,
+      previousHistoryYear: _question2YearController.text,
+      inflammatoryDisease: inflammatoryDiseaseCheckbox,
+      familialPolyposis: familialPolyposisCheckbox,
+      crohnDisease: crohnDiseaseCheckbox,
+      lynchSyndrome: lynchDiseaseCheckbox,
+      downloadPurpose: (purpose == '')? _question4PurposeController.text : purpose
+    );
+
+    register(request)
+      .then((value) => 
+        storeToken(encode(_phoneController.text + ":" + _passwordController.text))
+        .then((value) => 
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
+            body: Home(),
+          )))
+        ) 
+      );
   }
 
   tapped(int step) {
@@ -95,6 +123,23 @@ class _RegisterState extends State<Register> {
       question2 = (question2 == '') ? AppLocalizations.of(context)!.no : question2;
       question4 = (question4 == '') ? AppLocalizations.of(context)!.registrationQ4O1 : question4;
     });
+
+    var ageGroupItemsOptions = [ 
+      AppLocalizations.of(context)!.ageOption1,
+      AppLocalizations.of(context)!.ageOption2,
+      AppLocalizations.of(context)!.ageOption3
+    ];
+
+    var governorateOptions = [ 
+      AppLocalizations.of(context)!.governorateOption1,
+      AppLocalizations.of(context)!.governorateOption2,
+      AppLocalizations.of(context)!.governorateOption3,
+      AppLocalizations.of(context)!.governorateOption4,
+      AppLocalizations.of(context)!.governorateOption5,
+      AppLocalizations.of(context)!.governorateOption6,
+      AppLocalizations.of(context)!.governorateOption7,
+      AppLocalizations.of(context)!.governorateOption8
+    ];
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -138,18 +183,11 @@ class _RegisterState extends State<Register> {
                                 if (value == null || value.isEmpty)
                                   return AppLocalizations.of(context)!.fieldRequired;
                                 
-                                
-                                if (!emailRegexValidator.hasMatch(value)) {
-                                  return AppLocalizations.of(context)!.emailInvalid;
-                                }
-
                                 return null;
                               },
-                              keyboardType: TextInputType.emailAddress,
-                              controller: _emailController,
+                              controller: _nameController,
                               decoration: InputDecoration(
-                                hintText: "abc@example.com",
-                                labelText: AppLocalizations.of(context)!.email
+                                labelText: AppLocalizations.of(context)!.name
                               ),
                             ),
                             TextFormField(
@@ -222,19 +260,15 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   ageGroup = newValue!;
+                                  ageGroupNumber = ageGroupItemsOptions.indexOf(newValue);
                                 });
                               },
-                              items: <String>[ 
-                                AppLocalizations.of(context)!.ageOption1,
-                                AppLocalizations.of(context)!.ageOption2,
-                                AppLocalizations.of(context)!.ageOption3
-                               ]
-                                  .map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
+                              items: ageGroupItemsOptions
+                                .map((e) => DropdownMenuItem<String>(
+                                  value: e,
+                                  child: Text(e),
+                                ))
+                                .toList()
                             ),
                             Divider(),
                             Text(AppLocalizations.of(context)!.gender),
@@ -253,6 +287,7 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   gender = newValue!;
+                                  isMale = (newValue == AppLocalizations.of(context)!.genderOption1);
                                 });
                               },
                               items: <String>[ 
@@ -283,24 +318,15 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   governorate = newValue!;
+                                  governorateNumber = governorateOptions.indexOf(newValue);
                                 });
                               },
-                              items: <String>[ 
-                                AppLocalizations.of(context)!.governorateOption1,
-                                AppLocalizations.of(context)!.governorateOption2,
-                                AppLocalizations.of(context)!.governorateOption3,
-                                AppLocalizations.of(context)!.governorateOption4,
-                                AppLocalizations.of(context)!.governorateOption5,
-                                AppLocalizations.of(context)!.governorateOption6,
-                                AppLocalizations.of(context)!.governorateOption7,
-                                AppLocalizations.of(context)!.governorateOption8
-                               ]
-                                  .map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
+                              items: governorateOptions
+                                .map((e) => DropdownMenuItem<String>(
+                                  value: e,
+                                  child: Text(e),
+                                ))
+                                .toList(),
                             ),
                           ],
                         ),
@@ -335,6 +361,7 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   question1 = newValue!;
+                                  familyHistory = question1 == AppLocalizations.of(context)!.yes;
                                 });
                               },
                               items: <String>[ 
@@ -377,6 +404,7 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   question2 = newValue!;
+                                  previousHistory = newValue == AppLocalizations.of(context)!.yes;
                                 });
                               },
                               items: <String>[ 
@@ -395,7 +423,7 @@ class _RegisterState extends State<Register> {
                                 decoration: InputDecoration(
                                   labelText: AppLocalizations.of(context)!.registrationQ2A
                                 ),
-                                controller: _question2RelationController,
+                                controller: _question2YearController,
                                 keyboardType: TextInputType.number,
                                 validator: (value) {
                                   if (value == null || value.isEmpty)
@@ -463,6 +491,11 @@ class _RegisterState extends State<Register> {
                               onChanged: (String? newValue) {
                                 setState(() {
                                   question4 = newValue!;
+                                  if (newValue != AppLocalizations.of(context)!.registrationQ4O3) {
+                                    purpose = newValue;
+                                  } else {
+                                    purpose = '';
+                                  }
                                 });
                               },
                               items: <String>[ 
@@ -491,7 +524,6 @@ class _RegisterState extends State<Register> {
                                   return null;
                                 },
                               ),
-
                           ],
                         ),
                       ),

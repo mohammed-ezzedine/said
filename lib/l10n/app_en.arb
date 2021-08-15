@@ -81,6 +81,8 @@
     "governorateOption8": "Hermal",
     "greeting": "We are SAID NGO and we are here to help!",
     "introduction": "What is CRC?",
+    "invalidLogin": "Failed to login",
+    "invalidRegister": "Failed to register",
     "key11": "Colorectal cancer (CRC) affects the colon or rectum of the digestive system.",
     "key12": "The colon is the large intestine, whereas the rectum is the pathway that join the colon and anus.",
     "key13": "In Lebanon, the incidence of colorectal cancer in 2015 was 262.4 240.1 in males and females respectively (MOPH, n.d), and in 2016 the incidence was high at age 40-44 and 45-49 years in both males and females (Lakkis,2021).",
