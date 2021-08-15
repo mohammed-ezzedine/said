@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:said/components/said-button.dart';
+import 'package:said/pages/screeningPledging.dart';
 
 class ScreeningGuidelines extends StatefulWidget {
   const ScreeningGuidelines({ Key? key }) : super(key: key);
@@ -114,6 +116,10 @@ class _ScreeningGuidelinesState extends State<ScreeningGuidelines> {
               )
             )
           ),
+          SaidButton(
+            child: ScreeningPledging(),
+            text: AppLocalizations.of(context)!.screeningPledge,
+          )
         ]
       )
     );

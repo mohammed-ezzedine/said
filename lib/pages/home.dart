@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/components/said-scaffold.dart';
+import 'package:said/components/said-title.dart';
+import 'package:said/pages/about.dart';
 import 'package:said/pages/community.dart';
 import 'package:said/pages/prevention.dart';
 import 'package:said/pages/risk.dart';
@@ -24,15 +27,46 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, right: 20, top: 50),
+      padding: EdgeInsets.all(20),
       child: ListView (
         children: [
           Padding(
             padding: EdgeInsets.only(bottom: 20),
-            child: Image(
-              image: AssetImage('assets/img/logo-dual.png'),
+            child: Text(
+              AppLocalizations.of(context)!.greeting,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color: Color(0xFF1E3A8A),
+              ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
+                  body: About(),
+                  hasParent: true,  
+                )));
+              },
+              child: Image(
+                image: AssetImage('assets/img/logo-dual.png'),
+              ),
+            )
+            
+          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 20),
+          //   child: Text(
+          //     AppLocalizations.of(context)!.greeting,
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(
+          //       fontSize: 20,
+          //       color: Color(0xFF1E3A8A),
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: EdgeInsets.only(bottom: gapPadding),
             child: Row(
