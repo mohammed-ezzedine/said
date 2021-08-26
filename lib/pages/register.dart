@@ -77,12 +77,9 @@ class _RegisterState extends State<Register> {
 
     register(request)
       .then((value) => 
-        storeToken(encode(_phoneController.text + ":" + _passwordController.text))
-        .then((value) => 
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
-            body: Home(),
-          )))
-        ) 
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SaidScaffold(
+          body: Home(),
+        )))
       );
   }
 

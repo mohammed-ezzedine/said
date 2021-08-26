@@ -59,9 +59,26 @@ Future postStory(String body) async {
   }
 }
 
+// Future register(RegistrationRequest request) async {
+//   var response = await http.post(
+//     _buildUrl(path: '/application-users'),
+//     headers: {
+//       'Content-Type':'application/json',
+//       'Accept': 'application/json'
+//     },
+//     body: request.toJsonString(),
+//   );
+
+//   if (response.statusCode == 200) {
+//     return;
+//   } else {
+//     throw Exception('Failed to register');
+//   }
+// }
+
 Future register(RegistrationRequest request) async {
   var response = await http.post(
-    _buildUrl(path: '/application-users'),
+    _buildUrl(path: '/auth/local/register'),
     headers: {
       'Content-Type':'application/json',
       'Accept': 'application/json'
@@ -70,6 +87,7 @@ Future register(RegistrationRequest request) async {
   );
 
   if (response.statusCode == 200) {
+    storeToken(response.body);
     return;
   } else {
     throw Exception('Failed to register');
@@ -77,24 +95,47 @@ Future register(RegistrationRequest request) async {
 }
 
 Future<bool> login(String phone, String password) async {
-  String expectedToken = encode(phone + ":" + password);
 
-  var response = await http.get(_buildUrl(path: '/application-users'));
+  var response = await http.post(
+    _buildUrl(path: '/auth/local'),
+    headers: {
+      'Content-Type':'application/json',
+      'Accept': 'application/json'
+    },
+    body: jsonEncode({
+      "identifier": "+961" + phone + '@saidcrc.com',
+      "password": password,
+    }),
+  );
+
 
   if (response.statusCode == 200) {
-    Iterable jsonList = json.decode(response.body);
-    for (var user in jsonList) {
-      if (user['token'] == expectedToken) {
-        storeToken(expectedToken);
-        return true;
-      }
-    }
-
-    return false;
+    storeToken(response.body);
+    return true;
   } else {
-    throw Exception('Failed to login.');
+    return false;
   }
 }
+
+// Future<bool> login(String phone, String password) async {
+//   String expectedToken = encode(phone + ":" + password);
+
+//   var response = await http.get(_buildUrl(path: '/application-users'));
+
+//   if (response.statusCode == 200) {
+//     Iterable jsonList = json.decode(response.body);
+//     for (var user in jsonList) {
+//       if (user['token'] == expectedToken) {
+//         storeToken(expectedToken);
+//         return true;
+//       }
+//     }
+
+//     return false;
+//   } else {
+//     throw Exception('Failed to login.');
+//   }
+// }
 
 _buildUrl({required String path, dynamic params}) =>
   Uri.http(API_URL, path);

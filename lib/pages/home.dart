@@ -105,7 +105,7 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: SaidCard(
-                  title: AppLocalizations.of(context)!.prevention + "\n",
+                  title: AppLocalizations.of(context)!.prevention,
                   linkTo: Prevention(),
                   padLeft: gapPadding / 2,
                   backgroundColor: Color(0xFFF59E0B),
@@ -129,11 +129,9 @@ class _HomeState extends State<Home> {
                 ),
                 Expanded(
                   child: SaidCard(
-                    title: AppLocalizations.of(context)!.riskAmI + "\n",
+                    title: AppLocalizations.of(context)!.riskAmI,
                     linkTo: Risk(),
                     padLeft: gapPadding / 2,
-                    backgroundColor: Color(0xFFf5700b),
-                    textColor: Colors.white70,
                     icon: 'caution.png',
                   )
                 )
