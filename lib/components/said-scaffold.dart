@@ -4,14 +4,14 @@ import './said-appbar.dart';
 import './said-drawer.dart';
 
 class SaidScaffold extends StatefulWidget {
-  const SaidScaffold({ 
-    Key? key, 
-    required Widget this.body, 
-    bool this.hasParent = false,
-    bool this.hasTabs = false,
-    List<Widget> this.tabsIcons = emptyList,
-    List<Widget> this.tabsBodies = emptyList
-  }) : super(key: key);
+  const SaidScaffold(
+      {Key? key,
+      required Widget this.body,
+      bool this.hasParent = false,
+      bool this.hasTabs = false,
+      List<Widget> this.tabsIcons = emptyList,
+      List<Widget> this.tabsBodies = emptyList})
+      : super(key: key);
 
   final Widget body;
   final bool hasParent;
@@ -29,10 +29,9 @@ class _SaidScaffoldState extends State<SaidScaffold> {
   Widget getTabbedScaffold(BuildContext context) {
     return Scaffold(
       appBar: SaidAppbar(
-        withArrowBack: widget.hasParent,
-        hasTabs: true,
-        tabsIcons: widget.tabsIcons
-      ),
+          withArrowBack: widget.hasParent,
+          hasTabs: true,
+          tabsIcons: widget.tabsIcons),
       body: TabBarView(
         children: widget.tabsBodies,
       ),
@@ -42,9 +41,7 @@ class _SaidScaffoldState extends State<SaidScaffold> {
 
   Widget getUntabbedScaffold(BuildContext context) {
     return Scaffold(
-      appBar: SaidAppbar(
-        withArrowBack: widget.hasParent
-      ),
+      appBar: SaidAppbar(withArrowBack: widget.hasParent),
       body: widget.body,
       endDrawer: SaidDrawer(),
     );
@@ -52,9 +49,9 @@ class _SaidScaffoldState extends State<SaidScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return (widget.hasTabs)?  DefaultTabController(
-      length: widget.tabsIcons.length,
-      child: getTabbedScaffold(context)
-    ) : getUntabbedScaffold(context);
+    return (widget.hasTabs)
+        ? DefaultTabController(
+            length: widget.tabsIcons.length, child: getTabbedScaffold(context))
+        : getUntabbedScaffold(context);
   }
 }

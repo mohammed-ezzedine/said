@@ -8,6 +8,7 @@ import 'package:said/pages/prevention.dart';
 import 'package:said/pages/risk.dart';
 import 'package:said/pages/risks.dart';
 import 'package:said/pages/screening.dart';
+import 'package:said/pages/stages.dart';
 import 'package:said/pages/symptoms.dart';
 
 import './introduction.dart';
@@ -28,33 +29,87 @@ class _HomeState extends State<Home> {
         padding: EdgeInsets.all(20),
         child: ListView(
           children: [
-            Padding(
-              padding: EdgeInsets.only(bottom: 20),
-              child: Text(
-                AppLocalizations.of(context)!.greeting,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Color(0xFF1E3A8A),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: SaidCard(
+                      icon: "about.png",
+                      title: AppLocalizations.of(context)!.about,
+                      linkTo: Screening(),
+                      padRight: gapPadding / 2,
+                      backgroundColor: Color(0xFFF59E0B),
+                      textColor: Color.fromARGB(255, 255, 255, 255),
+                    ))
+                  ],
                 ),
-              ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: SaidCard(
+                      icon: "crc.png",
+                      padLeft: gapPadding / 2,
+                      title: AppLocalizations.of(context)!.introduction,
+                      linkTo: IntroductionWidget(),
+                      hasTabs: true,
+                      tabsIcons: [
+                        Text(AppLocalizations.of(context)!.general),
+                        Text(AppLocalizations.of(context)!.symptomsTitle),
+                        Text(AppLocalizations.of(context)!.riskFactorsTitle),
+                        Text(AppLocalizations.of(context)!.stages)
+                      ],
+                      tabsBodies: [
+                        IntroductionWidget(),
+                        Symptoms(),
+                        RiskFactors(),
+                        Stages()
+                      ],
+                    ))
+                  ],
+                ),
+                Row(children: [
+                  Expanded(
+                      child: SaidCard(
+                    title: AppLocalizations.of(context)!.screeningImportance,
+                    linkTo: Screening(),
+                    icon: "important.png",
+                    backgroundColor: Color(0xFFF59E0B),
+                    textColor: Color.fromARGB(255, 255, 255, 255),
+                  )),
+                ]),
+                Row(children: [
+                  Expanded(
+                      child: SaidCard(
+                    title: "Prevention",
+                    linkTo: Prevention(),
+                    icon: "first-aid-kit.png",
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                  )),
+                ]),
+                Row(
+                  children: [
+                    Expanded(
+                        child: SaidCard(
+                      backgroundColor: Color(0xFFF59E0B),
+                      textColor: Color.fromARGB(255, 255, 255, 255),
+                      title: AppLocalizations.of(context)!.communityRole,
+                      linkTo: Community(),
+                      icon: "community.png",
+                    )),
+                  ],
+                ),
+                Row(children: [
+                  Expanded(
+                      child: SaidCard(
+                    title: AppLocalizations.of(context)!.riskAmI,
+                    linkTo: Risk(),
+                    icon: "caution.png",
+                  ))
+                ]),
+              ],
             ),
-            Padding(
-                padding: EdgeInsets.only(bottom: 20),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SaidScaffold(
-                                  body: About(),
-                                  hasParent: true,
-                                )));
-                  },
-                  child: Image(
-                    image: AssetImage('assets/img/logo-dual.png'),
-                  ),
-                )),
+
             // Padding(
             //   padding: EdgeInsets.symmetric(vertical: 20),
             //   child: Text(
@@ -66,72 +121,6 @@ class _HomeState extends State<Home> {
             //     ),
             //   ),
             // ),
-            Padding(
-              padding: EdgeInsets.only(bottom: gapPadding),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: SaidCard(
-                    title: AppLocalizations.of(context)!.introduction,
-                    linkTo: IntroductionWidget(),
-                    hasTabs: true,
-                    tabsIcons: [
-                      Text(AppLocalizations.of(context)!.general),
-                      Text(AppLocalizations.of(context)!.symptomsTitle),
-                      Text(AppLocalizations.of(context)!.riskFactorsTitle),
-                    ],
-                    tabsBodies: [
-                      IntroductionWidget(),
-                      Symptoms(),
-                      RiskFactors(),
-                    ],
-                  ))
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: SaidCard(
-                  title: AppLocalizations.of(context)!.screeningImportance,
-                  linkTo: Screening(),
-                  padRight: gapPadding / 2,
-                  backgroundColor: Color(0xFFF59E0B),
-                  textColor: Colors.white70,
-                  icon: 'virus.png',
-                )),
-                Expanded(
-                    child: SaidCard(
-                  title: AppLocalizations.of(context)!.prevention,
-                  linkTo: Prevention(),
-                  padLeft: gapPadding / 2,
-                  backgroundColor: Color(0xFFF59E0B),
-                  textColor: Colors.white70,
-                  icon: 'first-aid-kit.png',
-                ))
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: gapPadding),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: SaidCard(
-                    title: AppLocalizations.of(context)!.communityRole,
-                    linkTo: Community(),
-                    padRight: gapPadding / 2,
-                    icon: 'community.png',
-                  )),
-                  Expanded(
-                      child: SaidCard(
-                    title: AppLocalizations.of(context)!.riskAmI,
-                    linkTo: Risk(),
-                    padLeft: gapPadding / 2,
-                    icon: 'caution.png',
-                  ))
-                ],
-              ),
-            )
           ],
         ));
   }

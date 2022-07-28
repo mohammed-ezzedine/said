@@ -5,7 +5,7 @@ import 'package:said/components/said-scaffold.dart';
 import 'package:said/pages/stages.dart';
 
 class IntroductionWidget extends StatefulWidget {
-  const IntroductionWidget({ Key? key }) : super(key: key);
+  const IntroductionWidget({Key? key}) : super(key: key);
 
   @override
   _IntroductionWidgetState createState() => _IntroductionWidgetState();
@@ -14,64 +14,60 @@ class IntroductionWidget extends StatefulWidget {
 class _IntroductionWidgetState extends State<IntroductionWidget> {
   @override
   Widget build(BuildContext context) {
-
-    var messages = [ 
-      AppLocalizations.of(context)!.key12, 
-      AppLocalizations.of(context)!.key13, 
-      AppLocalizations.of(context)!.key14, 
+    var messages = [
+      AppLocalizations.of(context)!.key12,
+      AppLocalizations.of(context)!.key13,
+      AppLocalizations.of(context)!.key14,
       AppLocalizations.of(context)!.key15
     ];
 
     return Container(
       padding: EdgeInsets.all(20),
-      child: ListView (
+      child: ListView(
         children: [
           Card(
-            elevation: 3,
-            margin: EdgeInsetsDirectional.only(bottom: 20),
-            child: Padding(
-              padding: EdgeInsetsDirectional.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 20),
-                    child: Text(AppLocalizations.of(context)!.introduction,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFFF59E0B),
-                        fontWeight: FontWeight.bold
+              elevation: 3,
+              margin: EdgeInsetsDirectional.only(bottom: 20),
+              child: Padding(
+                padding: EdgeInsetsDirectional.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                      child: Text(
+                        AppLocalizations.of(context)!.introduction,
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFFF59E0B),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      AppLocalizations.of(context)!.key11,
-                      style: TextStyle(
-                        fontSize: 17,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ),
-                  Image(image: AssetImage('assets/img/key-message-1.jpg')),
-                  for (String msg in messages)
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        '\u2022 ' + msg,
+                        AppLocalizations.of(context)!.key11,
                         style: TextStyle(
                           fontSize: 17,
                         ),
                         textAlign: TextAlign.justify,
                       ),
                     ),
-                ],
-              ),
-            )
-          ),
-          SaidButton(child: Stages(), text: AppLocalizations.of(context)!.stages)
+                    Image(image: AssetImage('assets/img/key-message-1.jpg')),
+                    for (String msg in messages)
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          '\u2022 ' + msg,
+                          style: TextStyle(
+                            fontSize: 17,
+                          ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ),
+                  ],
+                ),
+              )),
         ],
       ),
     );
