@@ -7,7 +7,7 @@ import 'package:said/components/said-widget-card.dart';
 import 'package:said/pages/screeningTypes.dart';
 
 class Risk extends StatefulWidget {
-  const Risk({ Key? key }) : super(key: key);
+  const Risk({Key? key}) : super(key: key);
 
   @override
   _RiskState createState() => _RiskState();
@@ -16,7 +16,6 @@ class Risk extends StatefulWidget {
 class _RiskState extends State<Risk> {
   @override
   Widget build(BuildContext context) {
-
     var message1Pts = [
       AppLocalizations.of(context)!.riskM1pt1,
       AppLocalizations.of(context)!.riskM1pt2,
@@ -61,11 +60,6 @@ class _RiskState extends State<Risk> {
               ],
             ),
           ),
-          SaidButton(
-            padding: EdgeInsets.only(top: 10),
-            child: ScreeningTypes(),
-            text: AppLocalizations.of(context)!.screeningTypes,
-          )
         ],
       ),
     );

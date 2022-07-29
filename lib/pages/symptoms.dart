@@ -3,14 +3,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-text-card.dart';
 
 class Symptoms extends StatefulWidget {
-  const Symptoms({ Key? key }) : super(key: key);
+  const Symptoms({Key? key}) : super(key: key);
 
   @override
   _SymptomsState createState() => _SymptomsState();
 }
 
 class _SymptomsState extends State<Symptoms> {
-
   @override
   Widget build(BuildContext context) {
     double gapPadding = 5;
@@ -18,31 +17,22 @@ class _SymptomsState extends State<Symptoms> {
     return Container(
       padding: EdgeInsets.all(20),
       child: ListView(
-        
         children: [
           Card(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Text(AppLocalizations.of(context)!.symptoms,
-                    style: TextStyle(
+              child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  AppLocalizations.of(context)!.symptoms,
+                  style: TextStyle(
                       fontSize: 20,
                       color: Color(0xFFF59E0B),
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Image(
-                    image: AssetImage('assets/img/symptoms.png'),
-                  ),
-                )
-              ],
-            )
-            
-          ),
+              )
+            ],
+          )),
           SaidTextCard(text: AppLocalizations.of(context)!.symptom1),
           SaidTextCard(text: AppLocalizations.of(context)!.symptom2),
           SaidTextCard(text: AppLocalizations.of(context)!.symptom3),

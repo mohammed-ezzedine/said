@@ -8,7 +8,7 @@ import 'package:said/pages/statistics.dart';
 import 'package:said/pages/tertiaryPrevention.dart';
 
 class Prevention extends StatefulWidget {
-  const Prevention({ Key? key }) : super(key: key);
+  const Prevention({Key? key}) : super(key: key);
 
   @override
   _PreventionState createState() => _PreventionState();
@@ -17,7 +17,6 @@ class Prevention extends StatefulWidget {
 class _PreventionState extends State<Prevention> {
   @override
   Widget build(BuildContext context) {
-
     var pts = [
       AppLocalizations.of(context)!.preventionPt1,
       AppLocalizations.of(context)!.preventionPt2,
@@ -29,14 +28,14 @@ class _PreventionState extends State<Prevention> {
     ];
 
     return Container(
-      padding: EdgeInsets.all(20),
-      child: ListView (
-        children: [
+        padding: EdgeInsets.all(20),
+        child: ListView(children: [
+          /*
           SaidButton(
             padding: EdgeInsets.only(bottom: 20),
             child: Statistics(), 
             text: AppLocalizations.of(context)!.stats
-          ),
+          ),*/
           SaidTextCard(
             title: AppLocalizations.of(context)!.preventionQ,
             text: AppLocalizations.of(context)!.preventionA,
@@ -50,10 +49,9 @@ class _PreventionState extends State<Prevention> {
                   child: Text(
                     AppLocalizations.of(context)!.preventionTitle,
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFFF59E0B),
-                      fontWeight: FontWeight.bold
-                    ),
+                        fontSize: 20,
+                        color: Color(0xFFF59E0B),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 for (var pt in pts)
@@ -79,8 +77,6 @@ class _PreventionState extends State<Prevention> {
             text: AppLocalizations.of(context)!.tertiaryPrevention,
             child: TertiaryPrevention(),
           ),
-        ]
-      )
-    );
+        ]));
   }
 }
