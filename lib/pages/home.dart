@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:said/components/said-home-card.dart';
+import 'package:said/pages/RegisterForFIT.dart';
 import 'package:said/pages/about.dart';
 import 'package:said/pages/community.dart';
 import 'package:said/pages/prevention.dart';
@@ -142,6 +143,14 @@ class _HomeState extends State<Home> {
                     )),
                   ],
                 ),
+                Row(children: [
+                  Expanded(
+                      child: SaidCard(
+                          textColor: Color.fromARGB(255, 2, 70, 126),
+                          title: AppLocalizations.of(context)!.test,
+                          linkTo: RegisterForFIT(),
+                          icon: "register.png"))
+                ]),
               ],
             ),
 

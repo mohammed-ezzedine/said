@@ -3,7 +3,7 @@ import 'package:timelines/timelines.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Stages extends StatefulWidget {
-  const Stages({ Key? key }) : super(key: key);
+  const Stages({Key? key}) : super(key: key);
 
   @override
   _StagesState createState() => _StagesState();
@@ -12,7 +12,6 @@ class Stages extends StatefulWidget {
 class _StagesState extends State<Stages> {
   @override
   Widget build(BuildContext context) {
-    
     var stages = [
       AppLocalizations.of(context)!.stage0,
       AppLocalizations.of(context)!.stage1,
@@ -26,9 +25,8 @@ class _StagesState extends State<Stages> {
       children: [
         Card(
           margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20)
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Padding(
             padding: EdgeInsets.all(10),
             child: Column(
@@ -36,34 +34,26 @@ class _StagesState extends State<Stages> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(bottom: 20),
-                  child: Text(AppLocalizations.of(context)!.stages,
+                  child: Text(
+                    AppLocalizations.of(context)!.stages,
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFFF59E0B),
-                      fontWeight: FontWeight.bold
-                    ),
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 255, 199, 88),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(
-                  AppLocalizations.of(context)!.stagesIntro,
-                  style: TextStyle(
-                    fontSize: 17
-                  ),
-                  textAlign: TextAlign.justify
-                ),
+                Text(AppLocalizations.of(context)!.stagesIntro,
+                    style: TextStyle(fontSize: 17),
+                    textAlign: TextAlign.justify),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Image(
                     image: AssetImage('assets/img/stages.png'),
                   ),
                 ),
-                Text(
-                  AppLocalizations.of(context)!.stagesIntro2,
-                  style: TextStyle(
-                    fontSize: 17
-                  ),
-                  textAlign: TextAlign.justify
-                ),
+                Text(AppLocalizations.of(context)!.stagesIntro2,
+                    style: TextStyle(fontSize: 17),
+                    textAlign: TextAlign.justify),
               ],
             ),
           ),
@@ -74,13 +64,10 @@ class _StagesState extends State<Stages> {
               indicator: DotIndicator(
                 color: Theme.of(context).appBarTheme.backgroundColor,
               ),
-              startConnector: SolidLineConnector(
-                color: Colors.lightBlue
-              ),
-              endConnector: SolidLineConnector(
-                color: Colors.lightBlue
-                // color: Theme.of(context).appBarTheme.backgroundColor,
-              ),
+              startConnector: SolidLineConnector(color: Colors.lightBlue),
+              endConnector: SolidLineConnector(color: Colors.lightBlue
+                  // color: Theme.of(context).appBarTheme.backgroundColor,
+                  ),
             ),
             nodeAlign: TimelineNodeAlign.start,
             crossAxisExtent: 300,
@@ -88,30 +75,26 @@ class _StagesState extends State<Stages> {
               padding: EdgeInsets.all(10.0),
               child: Card(
                 child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          AppLocalizations.of(context)!.stage + ' $i:',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xFFF59E0B)
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            AppLocalizations.of(context)!.stage + ' $i:',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 255, 199, 88)),
                           ),
                         ),
-                      ),
-                      Text(
-                        stages[i],
-                        style: TextStyle(
-                          fontSize: 17
+                        Text(
+                          stages[i],
+                          style: TextStyle(fontSize: 17),
+                          textAlign: TextAlign.justify,
                         ),
-                        textAlign: TextAlign.justify,
-                      ),
-                    ],
-                  )
-                ),
+                      ],
+                    )),
               ),
             ),
           )

@@ -80,7 +80,7 @@ class _ScreeningState extends State<Screening> {
                             AppLocalizations.of(context)!.screeningImportance,
                             style: TextStyle(
                                 fontSize: 20,
-                                color: Color(0xFFF59E0B),
+                                color: Color.fromARGB(255, 255, 199, 88),
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -101,7 +101,7 @@ class _ScreeningState extends State<Screening> {
             child: Expanded(
                 child: Card(
               elevation: 2,
-              color: Color(0xFFF59E0B),
+              color: Color.fromARGB(255, 255, 199, 88),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               /*

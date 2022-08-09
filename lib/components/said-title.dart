@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SaidTitle extends StatefulWidget {
-  const SaidTitle({ Key? key, required this.text, this.padding = EdgeInsets.zero }) : super(key: key);
+  const SaidTitle(
+      {Key? key, required this.text, this.padding = EdgeInsets.zero})
+      : super(key: key);
 
   final String text;
   final EdgeInsetsGeometry padding;
@@ -16,13 +18,11 @@ class _SaidTitleState extends State<SaidTitle> {
     return Padding(
       padding: widget.padding,
       child: Text(widget.text,
-        textAlign: TextAlign.start,
-        style: TextStyle(
-          fontSize: 20,
-          color: Color(0xFFF59E0B),
-          fontWeight: FontWeight.bold
-        )
-      ),
+          textAlign: TextAlign.start,
+          style: TextStyle(
+              fontSize: 20,
+              color: Color.fromARGB(255, 255, 199, 88),
+              fontWeight: FontWeight.bold)),
     );
   }
 }

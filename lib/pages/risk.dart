@@ -4,7 +4,6 @@ import 'package:said/components/said-button.dart';
 import 'package:said/components/said-text.dart';
 import 'package:said/components/said-title.dart';
 import 'package:said/components/said-widget-card.dart';
-import 'package:said/pages/screeningTypes.dart';
 
 class Risk extends StatefulWidget {
   const Risk({Key? key}) : super(key: key);
@@ -55,7 +54,7 @@ class _RiskState extends State<Risk> {
                 SaidText(
                   padding: EdgeInsets.only(bottom: 15),
                   text: AppLocalizations.of(context)!.riskM2pt2,
-                  color: Colors.red,
+                  color: Color.fromARGB(255, 255, 199, 88),
                 )
               ],
             ),

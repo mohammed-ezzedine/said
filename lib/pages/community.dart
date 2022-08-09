@@ -7,7 +7,7 @@ import 'package:said/components/said-title.dart';
 import 'package:said/components/said-widget-card.dart';
 
 class Community extends StatefulWidget {
-  const Community({ Key? key }) : super(key: key);
+  const Community({Key? key}) : super(key: key);
 
   @override
   _CommunityState createState() => _CommunityState();
@@ -16,7 +16,6 @@ class Community extends StatefulWidget {
 class _CommunityState extends State<Community> {
   @override
   Widget build(BuildContext context) {
-
     var message2Pts = [
       AppLocalizations.of(context)!.communityM2pt1,
       AppLocalizations.of(context)!.communityM2pt2,
@@ -28,48 +27,46 @@ class _CommunityState extends State<Community> {
     ];
 
     return Container(
-      padding: EdgeInsets.all(20),
-      child: ListView(
-        children: [
-          SaidWidgetCard(
-            child: Column(
-              children: [
-                SaidText(
-                  padding: EdgeInsets.only(bottom: 20),
-                  text: AppLocalizations.of(context)!.communityM1,
-                ),
-                Image(
-                  image: AssetImage("assets/img/community.jpg"),
-                ),
-              ],
-            ),
-          ),
-          SaidWidgetCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SaidTitle(
-                  padding: EdgeInsets.only(bottom: 20),
-                  text: AppLocalizations.of(context)!.communityM2title,
-                ),
-                for (var pt in message2Pts)
+        padding: EdgeInsets.all(20),
+        child: ListView(
+          children: [
+            SaidWidgetCard(
+              child: Column(
+                children: [
                   SaidText(
-                    padding: EdgeInsets.only(bottom: 15),
-                    text: pt,
+                    padding: EdgeInsets.only(bottom: 20),
+                    text: AppLocalizations.of(context)!.communityM1,
                   ),
-                
-              ],
+                  Image(
+                    image: AssetImage("assets/img/community.jpg"),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SaidWidgetCard(
-            child: SaidText(
-              color: Colors.purple,
-              text: AppLocalizations.of(context)!.communityM3,
-              padding: EdgeInsets.only(top: 10),
+            SaidWidgetCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SaidTitle(
+                    padding: EdgeInsets.only(bottom: 20),
+                    text: AppLocalizations.of(context)!.communityM2title,
+                  ),
+                  for (var pt in message2Pts)
+                    SaidText(
+                      padding: EdgeInsets.only(bottom: 15),
+                      text: pt,
+                    ),
+                ],
+              ),
             ),
-          )
-        ],
-      )
-    );
+            SaidWidgetCard(
+              child: SaidText(
+                color: Color.fromARGB(255, 2, 70, 126),
+                text: AppLocalizations.of(context)!.communityM3,
+                padding: EdgeInsets.only(top: 10),
+              ),
+            )
+          ],
+        ));
   }
 }

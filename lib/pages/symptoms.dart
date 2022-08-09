@@ -27,7 +27,7 @@ class _SymptomsState extends State<Symptoms> {
                   AppLocalizations.of(context)!.symptoms,
                   style: TextStyle(
                       fontSize: 20,
-                      color: Color(0xFFF59E0B),
+                      color: Color.fromARGB(255, 255, 199, 88),
                       fontWeight: FontWeight.bold),
                 ),
               )

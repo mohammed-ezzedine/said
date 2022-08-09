@@ -54,7 +54,7 @@ class _ScreeningGuidelinesState extends State<ScreeningGuidelines> {
                   AppLocalizations.of(context)!.screeningGuidelines,
                   style: TextStyle(
                       fontSize: 20,
-                      color: Color(0xFFF59E0B),
+                      color: Color.fromARGB(255, 255, 199, 88),
                       fontWeight: FontWeight.bold),
                 ),
               )),
@@ -74,7 +74,7 @@ class _ScreeningGuidelinesState extends State<ScreeningGuidelines> {
                             AppLocalizations.of(context)!.screeningGHighRisk,
                             style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.green,
+                                color: Color.fromARGB(255, 255, 199, 88),
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -104,7 +104,7 @@ class _ScreeningGuidelinesState extends State<ScreeningGuidelines> {
                           AppLocalizations.of(context)!.screeningGLowRisk,
                           style: TextStyle(
                               fontSize: 18,
-                              color: Colors.green,
+                              color: Color.fromARGB(255, 255, 199, 88),
                               decoration: TextDecoration.underline,
                               fontWeight: FontWeight.bold),
                         ),
