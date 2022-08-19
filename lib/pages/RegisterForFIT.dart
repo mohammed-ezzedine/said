@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:said/components/said-button.dart';
 
 import 'package:said/components/said-title.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -17,19 +18,23 @@ class _RegisterForFITState extends State<RegisterForFIT> {
       padding: EdgeInsets.all(20),
       child: ListView(
         children: [
-          SaidTitle(
-              text:
-                  "Register for the F.I.T. b y cliking the button below and choosing the closest Laboratory to you"),
           Center(
-            child: TextButton.icon(
+            heightFactor: 2,
+            child: Text(
+              "Register for the F.I.T. by cliking the button below and choosing the closest Laboratory to you",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Center(
+            child: FloatingActionButton(
+                elevation: 10,
                 onPressed: _launchURL,
-                icon: Icon(
+                backgroundColor: Color.fromARGB(255, 2, 70, 126),
+                child: Icon(
                   Icons.app_registration,
-                  color: Color.fromARGB(255, 2, 70, 126),
-                ),
-                label: Text(
-                  "Register",
-                  style: TextStyle(color: Color.fromARGB(255, 2, 70, 126)),
+                  color: Color.fromARGB(255, 255, 199, 88),
+                  size: 35,
                 )),
             /*
             child: InkWell(
@@ -38,12 +43,12 @@ class _RegisterForFITState extends State<RegisterForFIT> {
                 'https://docs.flutter.io/flutter/services/UrlLauncher-class.html'
               },
             ),*/
-          )
+          ),
         ],
       ),
     );
   }
 }
 
-void _launchURL() async => await launch(
-    'https://docs.google.com/forms/d/1Uq4z3Pdso2CBlUhRwNK9hyzgDtNGq6Nrc1ZuJvTx9EI/viewform?edit_requested=true%23responses');
+void _launchURL() async => await launchUrl(Uri.parse(
+    'https://docs.google.com/forms/d/1Uq4z3Pdso2CBlUhRwNK9hyzgDtNGq6Nrc1ZuJvTx9EI/viewform?edit_requested=true%23responses'));

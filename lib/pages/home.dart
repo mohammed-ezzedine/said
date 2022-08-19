@@ -4,9 +4,9 @@ import 'package:said/components/said-home-card.dart';
 import 'package:said/pages/RegisterForFIT.dart';
 import 'package:said/pages/about.dart';
 import 'package:said/pages/community.dart';
+import 'package:said/pages/contact.dart';
 import 'package:said/pages/prevention.dart';
 import 'package:said/pages/risk.dart';
-import 'package:said/pages/risks.dart';
 import 'package:said/pages/screening-guidelines.dart';
 import 'package:said/pages/screening.dart';
 import 'package:said/pages/screeningTypes.dart';
@@ -151,6 +151,18 @@ class _HomeState extends State<Home> {
                           linkTo: RegisterForFIT(),
                           icon: "register.png"))
                 ]),
+                Row(
+                  children: [
+                    Expanded(
+                        child: SaidCard(
+                      backgroundColor: Color.fromARGB(255, 255, 199, 88),
+                      textColor: Color.fromARGB(255, 2, 70, 126),
+                      title: "Contact Us",
+                      linkTo: contact(),
+                      icon: "contact.png",
+                    )),
+                  ],
+                ),
               ],
             ),
 
